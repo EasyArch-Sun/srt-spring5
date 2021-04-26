@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--配置Ｕｓｅｒ对象创建-->
+
+    <bean id="user" class="com.srt.demo1.User">
+    </bean>
+
+
+    <!--set方法注入-->
+    <bean id="book" class="com.srt.demo_ioc.di_set.Book">
+        <property name="bname" value="java"/>
+        <property name="bauthor" value="xxx"/>
+    </bean>
+</beans>
