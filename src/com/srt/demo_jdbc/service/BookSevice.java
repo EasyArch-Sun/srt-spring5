@@ -45,4 +45,22 @@ public class BookSevice {
     }
 
 
+    //批量添加
+    public void batchAdd(List<Object[]> batchArgs){
+
+        bookDao.batchAddBook(batchArgs);
+    }
+
+    //修改
+    public void batchUpdate(List<Object[]> batchArgs){
+        bookDao.batchUpdateBook(batchArgs);
+    }
+
+    //删除
+    public void batchDelete(List<Object[]> batchArgs){
+        bookDao.batchDeleteeBook(batchArgs);
+    }
+
+
+
 }
