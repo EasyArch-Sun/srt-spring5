@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+    <!--集合注入部分提取出来－util-->
+    <util:list id="bookList">
+        <value>xxx</value>
+        <value>yyy</value>
+        <value>zzz</value>
+    </util:list>
+
+    <bean id="book" class="com.srt.demo_ioc.di_other.collection_bean.Book">
+        <property name="list" ref="bookList"/>
+    </bean>
+
+</beans>
