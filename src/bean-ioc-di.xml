@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--set方法注入-->
+    <bean id="book" class="com.srt.demo_ioc.di_set.Book">
+        <property name="bname" value="java"/>
+        <property name="bauthor" value="xxx"/>
+    </bean>
+
+
+
+    <!--有参构造方法注入-->
+    <bean id="order" class="com.srt.demo_ioc.di_con.Orders">
+        <constructor-arg name="oname" value="abc"/>
+        <constructor-arg name="address" value="中国"/>
+    </bean>
+
+
+    <!--注入null 特殊符号&lt,&gt CDATA　-->
+    <bean id="book1" class="com.srt.demo_ioc.di_other.Book">
+        <property name="bname" value="java"/>
+        <property name="bauthor">
+            <value><![CDATA[<<老舍>>]]></value>
+        </property>
+        <property name="address">
+            <null></null>
+        </property>
+    </bean>
+
+
+
+    <!--外部bean方法注入-->
+    <bean id="userService" class="com.srt.demo_ioc.di_other.external_bean.service.UserService">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+    <bean id="userDao" class="com.srt.demo_ioc.di_other.external_bean.dao.UserDaoImpl">
+    </bean>
+
+
+
+    <!--内部bean方法注入-->
+    <bean id="emp" class="com.srt.demo_ioc.di_other.inside_bean.Emp">
+        <property name="ename" value="xxx"/>
+        <property name="gender" value="女"/>
+        <property name="dept" >
+            <bean id="dept" class="com.srt.demo_ioc.di_other.inside_bean.Dept">
+                <property name="dname" value="技术部"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="dept" class="com.srt.demo_ioc.di_other.inside_bean.Dept">
+    </bean>
+
+
+    <!--集合类型属性注入-->
+    <bean id="stu" class="com.srt.demo_ioc.di_other.collection_bean.Stu">
+
+        <property name="courses" >
+            <array>
+                <value>java</value>
+                <value>c++</value>
+            </array>
+        </property>
+
+        <property name="list">
+            <list>
+                <value>zhangsan</value>
+                <value>lisi</value>
+            </list>
+        </property>
+
+        <property name="maps">
+            <map>
+                <entry key="JAVA" value="java"/>
+                <entry key="GO" value="go"/>
+            </map>
+        </property>
+
+        <property name="sets">
+            <set>
+                <value>Mysql</value>
+                <value>Redis</value>
+            </set>
+        </property>
+
+
+        <!--集合值是对象-->
+        <property name="courseList">
+            <list>
+                <ref bean="course1"/>
+                <ref bean="course2"/>
+            </list>
+        </property>
+
+    </bean>
+
+    <bean id="course1" class="com.srt.demo_ioc.di_other.collection_bean.Course">
+        <property name="cname" value="网络"/>
+    </bean>
+
+    <bean id="course2" class="com.srt.demo_ioc.di_other.collection_bean.Course">
+        <property name="cname" value="算法"/>
+    </bean>
+
+
+</beans>
