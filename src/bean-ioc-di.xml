@@ -15,8 +15,8 @@
 
     <!--有参构造方法注入-->
     <bean id="order" class="com.srt.demo_ioc.di_con.Orders">
-        <constructor-arg name="oname" value="abc"/>
-        <constructor-arg name="address" value="中国"/>
+        <constructor-arg name="oname" value="abc" index="0"/>
+        <constructor-arg name="address" value="中国" index="1"/>
     </bean>
 
 
